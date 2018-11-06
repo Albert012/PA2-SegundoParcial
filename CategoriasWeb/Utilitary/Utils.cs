@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
 
 namespace CategoriasWeb.Utilitary
 {
-    public class Utils
+    public static class Utils
     {
         public static int ToInt(string valor)
         {
@@ -13,6 +14,11 @@ namespace CategoriasWeb.Utilitary
             int.TryParse(valor, out retorno);
 
             return retorno;
+        }
+
+        public static void MostraMensaje(this Page  page, string mensaje, string title, string type = "info")
+        {
+            page.ClientScript.RegisterStartupScript(page.GetType(), "toastr_message", String.Format("toastr.{0}('{1}','{2}');", type.ToLower(), mensaje, title), addScriptTags: true);
         }
 
         public static decimal ToDecimal(string valor)

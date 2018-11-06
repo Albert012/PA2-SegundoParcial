@@ -17,36 +17,32 @@ namespace CategoriasWeb.UI.Consultas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!Page.IsPostBack)
-            {
-                DesdeTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
-                HastaTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
-            }
+           
         }
 
         protected void BuscarLinkButton_Click(object sender, EventArgs e)
         {
-            Repositorio<Prestamos> repositorio = new Repositorio<Prestamos>();
+            PrestamoRepositorio repositorio = new PrestamoRepositorio();
             int id = 0;
 
             switch (FiltroDropDownList.SelectedIndex)
             {
                 case 0://Todo
-                    filtro = c => true && (c.Fecha >= Utils.ToDateTime(DesdeTextBox.Text) && c.Fecha <= Utils.ToDateTime(HastaTextBox.Text)) ;
+                    filtro = c => true;
                     break;
 
                 case 1://PrestamoId
                     id = Utils.ToInt(CriterioTextBox.Text);
-                    filtro = c => c.PrestamoId == id && (c.Fecha >= Utils.ToDateTime(DesdeTextBox.Text)) && (c.Fecha <= Utils.ToDateTime(HastaTextBox.Text));
+                    filtro = c => c.PrestamoId == id;
                     break;
 
                 case 2://Fecha
-                    filtro = c => c.Fecha.Equals(CriterioTextBox.Text) && (c.Fecha >= Utils.ToDateTime(DesdeTextBox.Text)) && (c.Fecha <= Utils.ToDateTime(HastaTextBox.Text));
+                    filtro = c => c.Fecha.Equals(CriterioTextBox.Text);
                     break;
 
                 case 3://CuentaId
                     id = Utils.ToInt(CriterioTextBox.Text);
-                    filtro = c => (c.CuentaId == id) && (c.Fecha >= Utils.ToDateTime(DesdeTextBox.Text)) && (c.Fecha <= Utils.ToDateTime(HastaTextBox.Text));
+                    filtro = c => (c.CuentaId == id);
 
                     break;
                                   

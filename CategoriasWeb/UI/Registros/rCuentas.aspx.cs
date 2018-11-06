@@ -61,8 +61,9 @@ namespace CategoriasWeb.UI.Registros
             if (cuenta == null)
             {
                 if (repositorio.Save(LlenaClase()))
-                {                    
-                    Mensaje(TipoMensaje.Sucess, "Guardado Correctamente");
+                {
+                    //Mensaje(TipoMensaje.Sucess, "Guardado Correctamente");
+                    Utils.MostraMensaje(this, "Guardado Correctamente", "Exito", "info");
                     Limpiar();
                 }
                 else

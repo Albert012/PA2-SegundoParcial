@@ -9,6 +9,7 @@
         <div class="form-group col-md-3">
             <asp:Label Text="Cuenta Id" class="text-primary" runat="server" />
             <asp:TextBox ID="CuentaIdTextBox" class="form-control input-group" TextMode="Number" placeholder="0" runat="server" />
+
         </div>
 
         <%--Boton--%>
@@ -26,7 +27,7 @@
         <div class="form-group col-md-3">
             <asp:Label Text="Fecha" runat="server" />
             <asp:TextBox ID="FechaTextBox" class="form-control input-group" TextMode="Date" runat="server" />
-            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="FechaTextBox" ErrorMessage="Campo Fecha obligatorio" ForeColor="Red" Display="Dynamic" SetFocusOnError="True" ToolTip="Campo Fecha obligatorio">Por favor llenar el campo Fecha </asp:RequiredFieldValidator>--%>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="FechaTextBox" ErrorMessage="Campo Fecha obligatorio" ForeColor="Red" Display="Dynamic" SetFocusOnError="True" ToolTip="Campo Fecha obligatorio">Por favor llenar el campo Fecha </asp:RequiredFieldValidator>
         </div>
     </div>
 
@@ -35,7 +36,7 @@
         <div class="form-group col-md-3">
             <asp:Label Text="Nombre" runat="server" />
             <asp:TextBox ID="NombreTextBox" class="form-control input-sm" runat="server" />
-            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="NombreTextBox" ErrorMessage="Campo Nombre obligatorio" ForeColor="Red" Display="Dynamic" SetFocusOnError="True" ToolTip="Campo Nombre obligatorio">Por favor llenar el campo Nombre </asp:RequiredFieldValidator>--%>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"  ControlToValidate="NombreTextBox" ErrorMessage="Campo Nombre obligatorio" ForeColor="Red" Display="Dynamic" SetFocusOnError="True" ToolTip="Campo Nombre obligatorio">Por favor llenar el campo Nombre </asp:RequiredFieldValidator>
         </div>
     </div>
 

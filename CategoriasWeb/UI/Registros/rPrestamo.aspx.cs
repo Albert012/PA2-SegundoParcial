@@ -22,7 +22,8 @@ namespace CategoriasWeb.UI.Registros
                 FechaTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 if (id > 0)
                 {
-                    Repositorio<Prestamos> repositorio = new Repositorio<Prestamos>();
+                    //Repositorio<Prestamos> repositorio = new Repositorio<Prestamos>();
+                    PrestamoRepositorio repositorio = new PrestamoRepositorio();
                     Prestamos prestamo = repositorio.Search(id);
 
                     if (prestamo == null)
@@ -191,6 +192,14 @@ namespace CategoriasWeb.UI.Registros
                 MensajeLabel.CssClass = "alert-success";
             else
                 MensajeLabel.CssClass = "alert-danger";
+        }
+
+        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            if (args.Value == string.Empty)
+                args.IsValid = false;
+            else
+                args.IsValid = true;
         }
     }
 }

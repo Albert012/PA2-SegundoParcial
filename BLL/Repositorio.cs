@@ -109,7 +109,7 @@ namespace BLL
             return entity;
         }
 
-        public List<T> GetList(Expression<Func<T, bool>> expression)
+        public virtual List<T> GetList(Expression<Func<T, bool>> expression)
         {
             List<T> list = new List<T>();
             Contexto contexto = new Contexto();

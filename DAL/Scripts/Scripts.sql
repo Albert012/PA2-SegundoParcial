@@ -30,3 +30,7 @@ Capital money,
 ValorPrestamo money,
 Balance money 
 );
+
+
+select * from prestamos
+select * from prestamosdetalles

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -162,7 +163,15 @@ namespace BLL
 
                 list.Add(new PrestamosDetalles(0, 0, i + 1, decimal.Round(intere, 2), decimal.Round(capital, 2), decimal.Round(valor, 2), decimal.Round(balance, 2)));
 
+                foreach (var item in list)
+                {
+                    item.Balance += intere + capital;
+                }
+                
             }
+
+            
+
             return list;
         }
 
@@ -205,7 +214,49 @@ namespace BLL
 
         public override Prestamos Search(int id)
         {
-            return base.Search(id);
+            Contexto contexto = new Contexto();
+            Prestamos prestamo = null;
+            try
+            {
+                prestamo = contexto.Prestamos.Include(x => x.Detalle).Where(z => z.PrestamoId == id).AsNoTracking().FirstOrDefault();
+            }
+            catch(Exception e)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+           
+            return prestamo;
+
+
+
+
+            
+        }
+
+        public override List<Prestamos> GetList(Expression<Func<Prestamos, bool>> expression)
+        {
+            List<Prestamos> list = new List<Prestamos>();
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                list = contexto.Prestamos.Include(x => x.Detalle).Where(expression).ToList();
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return list;
         }
     }
 }

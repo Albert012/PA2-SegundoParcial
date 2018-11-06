@@ -17,8 +17,11 @@ namespace CategoriasWeb.UI.Consultas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-
+            if (!Page.IsPostBack)
+            {
+                DesdeTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                HastaTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            }
         }
 
         protected void BuscarLinkButton_Click(object sender, EventArgs e)
@@ -33,7 +36,7 @@ namespace CategoriasWeb.UI.Consultas
 
                 case 1://CuentaId
                     id = Utils.ToInt(CriterioTextBox.Text);
-                    filtro = (c => c.CuentaId == id);
+                    filtro = c => c.CuentaId == id && (c.Fecha >= Utils.ToDateTime(DesdeTextBox.Text) && c.Fecha <= Utils.ToDateTime(HastaTextBox.Text));
                     break;
 
                 case 2://Fecha
@@ -41,18 +44,24 @@ namespace CategoriasWeb.UI.Consultas
                     break;
 
                 case 3://Nombre
-                    filtro = (c => c.Nombre.Contains(CriterioTextBox.Text));
+                    filtro = c => c.Nombre.Contains(CriterioTextBox.Text) && (c.Fecha >= Utils.ToDateTime(DesdeTextBox.Text) && c.Fecha <= Utils.ToDateTime(HastaTextBox.Text));
                     break;
 
                 case 4://Balance
                     decimal balance = Utils.ToDecimal(CriterioTextBox.Text);
-                    filtro = (c => c.Balance == balance);
+                    filtro = c => c.Balance == balance && (c.Fecha >= Utils.ToDateTime(DesdeTextBox.Text) && c.Fecha <= Utils.ToDateTime(HastaTextBox.Text));
                     break;
 
             }
 
             CuentaGridView.DataSource = repositorio.GetList(filtro);
             CuentaGridView.DataBind();
+        }
+
+        protected void ImprimirButton_Click(object sender, EventArgs e)
+        {
+            Response.Write("<script>window.open('../../UI/Reportes/ReportWebForms/ReportCuentas.aspx','_blanck');</script");
+          
         }
     }
 }

@@ -12,8 +12,9 @@
     <script src="Content/js/jquery-3.3.1.min.js"></script>
     <script src="Content/js/bootstrap.bundle.min.js"></script>
     <script src="Content/js/bootstrap.min.js"></script>
-    <script src="Content/js/toastr.js"></script>
-    <link href="Content/css/toastr.css" rel="stylesheet" />
+    
+    <script src="Content/js/toastr.min.js"></script>
+    <link href="Content/css/toastr.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -36,7 +37,7 @@
         </Scripts>
     </asp:ScriptManager>--%>
 
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
         <a class="navbar-brand" href="#">PrestaSoft</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Menu">
             <span class="navbar-toggler-icon"></span>
